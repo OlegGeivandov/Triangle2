@@ -58,13 +58,12 @@ public class HelloController {
     public void loadFromFileAndCalculate() throws IOException {
         FileChooser fc = new FileChooser();
         File file = fc.showOpenDialog(null);
-//        areaLbl.setText(file.getName());
         List<String> list = Files.readAllLines(file.toPath());
         for (String str: list) {
             String[] words = str.split(" ");
             for (int i = 0; i < words.length; i++) {
                 tr = new Triangle(Double.parseDouble(words[0]), Double.parseDouble(words[1]), Double.parseDouble(words[2]));
-                triangles.add(tr);
+                if (tr.isTriangle) triangles.add(tr);
 //                sumArea += tr.area;
             }
         }
